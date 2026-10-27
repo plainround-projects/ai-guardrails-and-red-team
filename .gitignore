@@ -14,3 +14,5 @@ htmlcov/
 .DS_Store
 logs/
 .omc/
+java/target/
+reports/java/
