@@ -17,7 +17,7 @@ This is authorized testing of a fictional sample assistant that this repository 
 | --- | --- | --- |
 | Python | 3.12 or 3.13 (tested with 3.13) | the assistant, the guards, the suites, the gate |
 | GNU Make | 3.81 or newer | every command below |
-| JDK and Maven | JDK 21 or newer (tested with 25), Maven 3.9 | the Java (Spring AI) port |
+| JDK | JDK 21 or newer (tested with 25); Maven 3.9.9 comes with the checked-in wrapper `java/mvnw` | the Java (Spring AI) port |
 | Spring AI | 2.0.1 (with the Spring Boot 4.0.5 dependency BOM) | the Java port's live adapter |
 | ollama | 0.40 or newer, only for `make record` | the assistant and the classifier: `qwen2.5:1.5b` |
 | Python packages | `httpx`; pytest, pytest-cov, ruff, mypy, import-linter, pip-audit for development, hash-pinned in `requirements.lock` and `requirements-dev.lock` | everything |
@@ -126,7 +126,7 @@ tests/
   e2e/               the study replays to the committed results; the gate fails on planted weakenings.
   live/              opt-in tests against a real server (skipped unless RUN_LIVE=1).
   fixtures/          recorded.jsonl: real model outputs, keyed by request hash.
-java/                Maven project: the same guard layer and suites on Spring AI, ArchUnit, parity test.
+java/                Maven project (wrapper `mvnw` checked in): the same guard layer and suites on Spring AI, ArchUnit, parity test.
 scripts/             make_data.py (deterministic data generator).
 ```
 
