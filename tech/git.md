@@ -32,6 +32,7 @@ A file listed in `.gitignore` is not shown by `git status` and is not added by `
 These are the latest commits (`git log --format='%h %ad %s' --date=short`):
 
 ```text
+e5b125d 2026-10-27 docs: add tech/, one note per technology used here (33 files and an index)
 859797f 2026-10-27 build: check in the Maven wrapper and use it from the Makefile
 6a29e53 2026-10-27 fix: keep the last lint and test touches
 65a1727 2026-10-27 docs: add README, ARCHITECTURE, ADRs, CHANGELOG and the Dockerfile
@@ -43,7 +44,6 @@ bab79fc 2026-10-27 feat(data): add 25 held-out attacks written after the guard l
 29e19cf 2026-10-27 test: add unit and opt-in live tests
 1ae0797 2026-10-27 feat(data): add the shop, the 100 attacks, the 100 benign questions, the canary and the prompts
 70ce1a2 2026-10-27 feat(interfaces): add the command-line program and the composition root
-8734929 2026-10-27 feat(infrastructure): add model adapters, data, capture, settings and logging
 ```
 
 Each line is: short commit name, date, and the message. The messages follow the *conventional commits* habit: a type (`feat`, `fix`, `docs`, `test`, `chore`) then a colon and a summary.
