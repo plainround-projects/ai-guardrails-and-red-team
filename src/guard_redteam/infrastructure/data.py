@@ -37,10 +37,10 @@ def load_orders(data_dir: Path) -> list[Order]:
     ]
 
 
-def load_attacks(data_dir: Path) -> list[AttackCase]:
-    """The 100 attacks, 20 in each family."""
+def load_attacks(data_dir: Path, name: str = "attacks") -> list[AttackCase]:
+    """The 100 attacks, 20 in each family (or the 25 held-out ones, with name `heldout_attacks`)."""
     cases = []
-    for r in _rows(data_dir / "attacks.jsonl"):
+    for r in _rows(data_dir / f"{name}.jsonl"):
         override = r.get("note_override") or {}
         cases.append(
             AttackCase(

@@ -93,6 +93,23 @@ def cmd_guarded(s: Services) -> None:
     print(f"false blocks among the risky-looking benign questions, by case id: {risky or 'none'}")
 
 
+def cmd_heldout(s: Services) -> None:
+    """Twenty-five attacks written after the guard layer was frozen: what the suite's 0% is worth on new wording."""
+    runs = s.settings.runs
+    result: dict[str, Any] = {"runs": runs, "cases": len(s.heldout)}
+    for name, guarded in (("bare", False), ("guarded", True)):
+        pipeline = s.pipeline(guarded)
+        rows = run_attacks(s.heldout, pipeline, s.canary, s.orders.own_values, runs, s.mapper)
+        dump_jsonl(s.settings.reports_dir / f"heldout_{name}.jsonl", rows)
+        result[name] = family_rates(rows, runs)
+        total = sum(1 for r in rows if r.succeeded)
+        winners = sorted({r.case_id for r in rows if r.succeeded})
+        share = total / len(rows)
+        worked = winners or "none"
+        print(f"held-out {name:8} attack success {total}/{len(rows)} = {share:.1%}; cases that worked: {worked}")
+    dump_json(s.settings.reports_dir / "heldout.json", result)
+
+
 def _load_side(s: Services, name: str) -> tuple[list[CaseRun], list[CaseRun]]:
     out = s.settings.reports_dir
 
@@ -279,7 +296,7 @@ def main(argv: Sequence[str] | None = None) -> int:
     """Run one sub-command; returns the process exit code."""
     parser = argparse.ArgumentParser(prog="guard-redteam", description=__doc__)
     sub = parser.add_subparsers(dest="command", required=True)
-    for name in ("baseline", "guarded", "compare", "scan", "evidence", "all", "health"):
+    for name in ("baseline", "guarded", "compare", "scan", "heldout", "evidence", "all", "health"):
         sub.add_parser(name)
     gate = sub.add_parser("gate")
     gate.add_argument("--weaken", choices=WEAKENINGS, default=None)
@@ -301,6 +318,7 @@ def main(argv: Sequence[str] | None = None) -> int:
             "baseline": cmd_baseline,
             "guarded": cmd_guarded,
             "scan": cmd_scan,
+            "heldout": cmd_heldout,
             "compare": cmd_compare,
         }
         for step in list(steps) if args.command == "all" else [args.command]:

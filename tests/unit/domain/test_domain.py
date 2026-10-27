@@ -91,7 +91,7 @@ def test_the_public_policy_paragraph_is_not_confidential():
     prompt = "Intro line for the assistant here.\n\nShop policy: returns are accepted within thirty days of delivery today.\n\nSecret rule that stays inside the shop only."
     assert confidential(prompt) == "Intro line for the assistant here.\n\nSecret rule that stays inside the shop only."
     assert not prompt_overlap("returns are accepted within thirty days of delivery today", prompt)
-    assert prompt_overlap("the Secret rule that stays inside the shop only", prompt)
+    assert prompt_overlap("the Secret rule that stays inside the shop only.", prompt)
 
 
 def test_output_checks():

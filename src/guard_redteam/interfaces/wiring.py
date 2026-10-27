@@ -33,6 +33,7 @@ class Services:
 
     settings: Settings
     attacks: list[AttackCase]
+    heldout: list[AttackCase]
     benign: list[BenignCase]
     canary: str
     orders: InMemoryOrders
@@ -75,6 +76,7 @@ def build_services(env: Mapping[str, str], root: Path) -> Services:
     return Services(
         settings=settings,
         attacks=load_attacks(data),
+        heldout=load_attacks(data, "heldout_attacks"),
         benign=load_benign(data),
         canary=load_canary(data),
         orders=InMemoryOrders(load_orders(data), load_customers(data)),
