@@ -1,0 +1,24 @@
+{
+  "assistant_model": "qwen2.5:1.5b",
+  "fixtures": {
+    "recorded.jsonl": "3727f5e2e23d8124cbec15780d520412b3eaf401278f29975be8656bc59a45f4"
+  },
+  "guard_model": "qwen2.5:1.5b",
+  "guard_version": "guard.v1",
+  "hashes": {
+    "data/attacks.jsonl": "90f1042d733bce925e723057b54174e09eed147b8906bdbee0a3516158c75e45",
+    "data/benign.jsonl": "71b033f04f3f45e86f195f207e2856d903bf34ee1b90dd0fdaf8c2a576c534b6",
+    "data/canary.txt": "b8598d2c819bd4bb09b7741013f08e4e5f02bd5ebda8685cf71cce9a2c1fc06e",
+    "data/customers.jsonl": "a840cc85842fda9a1f2eb2d26748e56d12a4c439a1e58a9acee91822091806bc",
+    "data/heldout_attacks.jsonl": "fb057b2e8934db79e900d506f4d034606e0ec241929135e30b4577c7132cbd94",
+    "data/orders.jsonl": "b056dcceff16e074bedbb9ca4d28410f00a1a91bdd00cc091cc3293a2c2878fc",
+    "evals/limits.json": "44dde5611066285756db7e488ce8a29a89483a2535247cde31cc2469e4749a4e",
+    "prompts/CHANGELOG.md": "9e6fd6d6b06cbe732b37dc419ad22184fb8bfd4230cd7b268c19dd56e356686e",
+    "prompts/assistant.v1.md": "4bec03176c3ca50116b6063ab15c31f9e763253d795af8a06c91bbc9aa58839e",
+    "prompts/input_guard.v1.md": "e39601029afc74016d5ac3010e285c269f4f1a00e214a2286d274cb0baf09de4",
+    "prompts/input_guard.v2.md": "0bb49417e807a8b5ed85a87a0194b3179ac8d30ab2ca95547dda30bc3c9aa1b8"
+  },
+  "reproduce": "make run   (offline, from tests/fixtures); then make evidence",
+  "runs": 3,
+  "temperature": 0.7
+}

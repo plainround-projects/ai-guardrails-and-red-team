@@ -1,0 +1,12 @@
+{
+  "leaks": [],
+  "log_lines_scanned": 300,
+  "model_requests_scanned": 321,
+  "planted_values": [
+    "+1 415 555 1111",
+    "4111 1111 1111 1111",
+    "carol@example.com",
+    "ivan@example.com"
+  ],
+  "replies_with_unresolved_placeholder": 1
+}
