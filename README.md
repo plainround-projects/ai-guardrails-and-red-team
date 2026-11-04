@@ -11,6 +11,24 @@ A guard layer around a small online shop's support assistant: redaction of email
 
 This is authorized testing of a fictional sample assistant that this repository builds; nothing here targets a real system.
 
+## Architecture
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/diagrams/architecture-dark.svg">
+  <img alt="Inside Pipeline.respond a message is redacted, passes the Input guard, reaches the Assistant, which scans outside data and calls the ChatModel, then passes the Output guard and is restored and scrubbed. A block at the input, the data scan or the output ends in a Designed refusal with a reason code, and the Suites and the Release gate test the whole pipeline." src="docs/diagrams/architecture.svg">
+</picture>
+
+Each defense is a separate step in one pipeline, so a weakened configuration is the real code with one step switched off, which is what the release gate catches.
+
+## How one run flows
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/diagrams/flow-dark.svg">
+  <img alt="One request in ten rows from redaction through the input guard, the data scan, the model call and the output guard to a restored reply, with three warning rows for the three places a request is refused and a last row that counts 0 of 300 attack runs that worked." src="docs/diagrams/flow.svg">
+</picture>
+
+A request is refused at the input, at the data scan or at the output with a reason code, and the amber rows show where each of the three refusals leaves the pipeline.
+
 ## Prerequisites
 
 | Tool | Version | Used for |

@@ -1,5 +1,11 @@
 # Changelog
 
+## [Unreleased]
+
+### Added
+
+- Drawn architecture and flow figures in `docs/diagrams/`, light and dark, shown in the README.
+
 ## 0.1.0 - 2026-10-27
 
 - Domain: shop records, two-way redaction with a request-scoped mapping, the input rules and soft signals, the output checks, attack effects, rates with Wilson intervals.
