@@ -16,3 +16,8 @@
 - Recorded fixtures: 748 real exchanges with `qwen2.5:1.5b` served by ollama 0.40.6.
 - Java (Spring AI 2.0.1) port with ArchUnit and a parity test against the Python results.
 - CI: format, lint, types, import rules, unit tests with coverage, audit, e2e replay, the release gate, Java build.
+
+### Fixed
+
+- ARCHITECTURE.md and README now match the code where they disagreed (see the drawn figures).
+
